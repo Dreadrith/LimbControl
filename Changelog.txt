@@ -1,0 +1,16 @@
+Ideas/To Do:
+- Automatically enable and disable limb control if controlling
+- Write Defaults support
+- Only use 2 floats + 1 int thanks to copy parameters if adding another limb or tracking control
+- Modify Parameters to use path format and no spaces. i.e: LC/LeftArm/X
+- Make UI more user friendly
+
+(v1.0.3)
+--------
+- [Improvement] Max Parameter Cost is now detected automatically
+- [Change] Modified folder name and paths from 'Limb Control' to 'LimbControl'
+- [Change] Moved script to editor folder and removed unnecessary '#if UNITY_EDITOR'
+
+(v1.0.2)
+--------
+- Initial Changelog creation

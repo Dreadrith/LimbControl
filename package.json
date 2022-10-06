@@ -1,0 +1,28 @@
+{
+  "name": "com.dreadrith.limbcontrol",
+  "displayName": "DreadTools - Limb Control",
+  "version": "1.0.2",
+  "unity": "2019.4",
+  "description": "Puppet Control your limbs whether you're on VR or Desktop, Sitting or Dancing",
+  "keywords": [
+    "Dreadrith",
+    "DreadScripts",
+    "DreadTools",
+    "VRChat",
+	"Tool",
+    "Feature",
+    "Desktop"
+  ],
+  "author": {
+    "name": "Dreadrith",
+    "email": "dreadscripts@gmail.com",
+    "url": "https://linktr.ee/Dreadrith"
+  },
+  "legacyFolders": {
+    "Assets\\DreadScripts/Limb Control": "590739e9535a1a0418b3476990debfb3"
+  },
+  "legacyFiles": {
+    "Assets\\DreadScripts/Limb Control/LimbControl.cs": "546c21cd2ef473f469fc09e9f17df7be"
+  },
+  "url" : "https://github.com/dreadrith/com.dreadrith.limbcontrol.git#1.0.2"
+}
