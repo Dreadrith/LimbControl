@@ -1,18 +1,14 @@
-PLEASE DO NOT UPCHARGE OR UPSELL FOR APPLYING LIMB CONTROL TO UPLOADS OR COMMISSIONS
-
 Made by Dreadrith#3238
-Discord: https://discord.gg/ZsPfrGn
-Github: https://github.com/Dreadrith/DreadScripts
-Gumroad: https://gumroad.com/dreadrith
-Ko-fi: https://ko-fi.com/dreadrith
+Discord Server: https://discord.gg/ZsPfrGn
 
-Version: v1.0.3
+Version: v1.1.0
 
 Feature Release
 ----------------
 Window found under DreadTools > Limb Control
 
-Limb Control allows you to control your limbs through Puppet Control with just a few clicks.
+Limb Control allows the control of limbs through Puppet Control with a few clicks.
+Desktop users, you've got power now! Half body users, Kick those people that say you dun got legs!
 
 Setup:
 x Set your Avatar Descriptor
@@ -20,13 +16,11 @@ x Select the limbs to control
 x Press Add Control
 x Done!
 
-Each control costs 17 memory. (1 bool, 2 floats)
 By default, each selected limb is a separate control and is controlled separately.
 Use "Same Control" to make the selected limbs be controlled using the same control.
 
 Use "Custom BlendTree" to change the way the limbs move by setting your own BlendTree.
 
-"Add Tracking" costs 8 Memory. (1 int)
 Add Tracking: Adds another Submenu to the Expression Menu which allows Enabling/Disabling tracking on limbs.
 Utilizes the integer values from 244 to 255, integer may be reused for other purposes.
 
