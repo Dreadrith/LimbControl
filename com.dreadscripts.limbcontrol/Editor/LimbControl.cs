@@ -298,9 +298,10 @@ namespace DreadScripts.LimbControl
             AddControls(mainMenu, new List<VRCExpressionsMenu.Control>() { newControl });
 
             AddParameters(myParams, new List<VRCExpressionParameters.Parameter>() {
-            new VRCExpressionParameters.Parameter(){ name = toggleParameter,      saved = false,  valueType = VRCExpressionParameters.ValueType.Bool, defaultValue=0, networkSynced = false },
-            new VRCExpressionParameters.Parameter(){ name = treeParameter1, saved = true,   valueType = VRCExpressionParameters.ValueType.Float, networkSynced = false  },
-            new VRCExpressionParameters.Parameter(){ name = treeParameter2, saved = true,   valueType = VRCExpressionParameters.ValueType.Float, networkSynced = false  }
+	            new VRCExpressionParameters.Parameter(){ name = tempParameter,  saved = false, valueType = VRCExpressionParameters.ValueType.Bool,  networkSynced = false, defaultValue = 0 }, 
+	            new VRCExpressionParameters.Parameter(){ name = toggleParameter,saved = true, valueType = VRCExpressionParameters.ValueType.Bool,  networkSynced = false, defaultValue = 0 }, 
+	            new VRCExpressionParameters.Parameter(){ name = treeParameter1, saved = true,  valueType = VRCExpressionParameters.ValueType.Float, networkSynced = false, defaultValue = 0 }, 
+	            new VRCExpressionParameters.Parameter(){ name = treeParameter2, saved = true,  valueType = VRCExpressionParameters.ValueType.Float, networkSynced = false, defaultValue = 0 }
             });
         
             BlendTree myTree = CopyAssetAndReturn<BlendTree>(tree, AssetDatabase.GenerateUniqueAssetPath(folderPath + "/" + tree.name + ".blendtree"));
