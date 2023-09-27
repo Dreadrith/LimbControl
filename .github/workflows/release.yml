@@ -7,10 +7,10 @@ on:
     paths: package.json
 
 env:
-  packageName: "com.dreadscripts.carboncopy"
-  packagePath: "Packages/com.dreadscripts.carboncopy"
-  packageFileName: "CarbonCopy"
-  packageReleaseName: "Carbon Copy"
+  packageName: "com.dreadscripts.limbcontrol"
+  packagePath: "Packages/com.dreadscripts.limbcontrol"
+  packageFileName: "LimbControl"
+  packageReleaseName: "LimbControl"
 
 permissions:
   contents: write
