@@ -1,3 +1,8 @@
+(v1.1.1)
+--------
+- [Fix] Fixed Package importing to project root instead of Packages
+- [Fix] Fixed Package causing upload to throw errors due to Editor namespace
+
 (v1.1.0)
 --------
 - [Feature] Limb Control will now also temporarily activate with control menu is open

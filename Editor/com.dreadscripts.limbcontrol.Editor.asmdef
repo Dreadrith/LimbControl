@@ -1,7 +1,9 @@
 {
     "name": "com.dreadscripts.limbcontrol.Editor",
     "references": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

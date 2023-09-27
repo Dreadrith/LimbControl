@@ -4,11 +4,13 @@ on:
   workflow_dispatch:
   push:
     branches: main
-    paths: com.dreadscripts.limbcontrol/**
+    paths: package.json
 
 env:
-  packageName: "com.dreadscripts.limbcontrol"
-  packageDisplayName: "LimbControl"
+  packageName: "com.dreadscripts.carboncopy"
+  packagePath: "Packages/com.dreadscripts.carboncopy"
+  packageFileName: "CarbonCopy"
+  packageReleaseName: "Carbon Copy"
 
 permissions:
   contents: write
@@ -21,39 +23,58 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
     
-      - name: get version
+      - name: Get Version
         id: version
-        uses: notiz-dev/github-action-json-property@7c8cf5cc36eb85d8d287a8086a39dac59628eb31
+        uses: zoexx/github-action-json-file-properties@b9f36ce6ee6fe2680cd3c32b2c62e22eade7e590
         with: 
-            path: "${{env.packageName}}/package.json"
+            file_path: "./package.json"
             prop_path: "version"
+      
+      - name: Generate Tag
+        id: tag
+        run: echo prop="v${{ steps.version.outputs.value }}" >> $GITHUB_OUTPUT
     
       - name: Set Environment Variables
         run: |
-          echo "zipFile=${{ env.packageDisplayName }}_v${{ steps.version.outputs.prop }}".zip >> $GITHUB_ENV
-          echo "unityPackage=${{ env.packageDisplayName }}_v${{ steps.version.outputs.prop }}.unitypackage" >> $GITHUB_ENV
+          echo "zipFile=${{ env.packageFileName }}_v${{ steps.version.outputs.value }}_VPM".zip >> $GITHUB_ENV
+          echo "unityPackage=${{ env.packageFileName }}_v${{ steps.version.outputs.value }}.unitypackage" >> $GITHUB_ENV
+
+      - name: Create directory and move files
+        run: |
+          mkdir -p ${{env.packagePath}}
+          rsync -r --exclude="${{ env.packagePath }}" ./ "${{ env.packagePath }}"/
         
       - name: Create Zip
         uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
         with:
           type: "zip"
-          directory: "${{env.packageName}}/"
-          filename: "../${{env.zipFile}}" # make the zip file one directory up, since we start one directory in above
+          directory: "${{env.packagePath}}/"
+          filename: "../../${{env.zipFile}}" # make the zip file two directories up, since we start two directories in above
+          exclusions: "*.git* *.github* .gitignore Packages/"
           
-      - run: find "${{env.packageName}}/" -name \*.meta >> metaList
+      - run: find "${{env.packagePath}}" -name \*.meta >> metaList
           
       - name: Create UnityPackage
         uses: pCYSl5EDgo/create-unitypackage@cfcd3cf0391a5ef1306342794866a9897c32af0b
         with:
           package-path: ${{ env.unityPackage }}
           include-files: metaList
-        
+          
+      - name: Add Icon to UnityPackage
+        uses: foxscore/add-icon-to-unitypackage@v1
+        with:
+          package_path: ${{ env.unityPackage }}
+          icon_path: '.github/thumbnail.png'
+          package_not_found_behavior: 'warn'
+          icon_not_found_behavior: 'warn'
+          icon_already_present_behavior: 'warn'
         
       - name: Make Release
-        uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5
+        uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844
         with:
-          tag_name: "v${{ steps.version.outputs.prop }}"
+          name: "${{ env.packageReleaseName }} v${{ steps.version.outputs.value }}"
+          tag_name: "v${{ steps.version.outputs.value }}"
           files: |
             ${{ env.zipFile }}
             ${{ env.unityPackage }}
-            ${{ env.packageName }}/package.json
+            ./package.json
