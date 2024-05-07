@@ -1,3 +1,8 @@
+(v1.1.2)
+--------
+- [Misc] Defined minimal unity version
+- [Misc] Renamed package to say DreadScripts instead of DreadTools
+
 (v1.1.1)
 --------
 - [Fix] Fixed Package importing to project root instead of Packages
